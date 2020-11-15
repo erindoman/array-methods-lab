@@ -17,28 +17,27 @@ const inventors = [
   // Array.prototype.filter()
   // 1. Filter the array of inventors into a new array containing only the inventors born in the 1500's
   
-//   const oldInventors = inventors.filter(inv => inv.year < 1600);
+ const oldInventors = inventors.filter(function(inv) {
+    return inv.year < 1600 && inv.year > 1499
+ })
+ console.log(oldInventors)
 
-  const oldInventors = inventors.filter(function(inv) {
-      return inv.year < 1600 && inv.year > 1499
-  })
-console.log(oldInventors)
-  
   
   // Array.prototype.map()
   // 2. Map the array of the inventors into a new array containing objects with just the first and last names as properties
   
-  
-  
-  
+ const names = inventors.map((inventor) => `${inventor.first} ${inventor.last}`)
+ console.log(names)
+
   // Array.prototype.sort()
   // 3. Sort the inventors by birthdate, oldest to youngest
   
-  
+ const birthdates = inventors.sort((a,b) => (a.year - b.year)) 
+ console.log(birthdates)
   
   // 4. Sort the inventors by years lived from shortest to longest-lived
   
-  
+  const lifespan = inventors.sort((a,b) => a.passed - a.year > b.passed - b.ear)
   
   // Array.prototype.reduce()
   // 5. How many years did all the inventors live?
@@ -62,7 +61,8 @@ console.log(oldInventors)
   // Array.prototype.map()
   // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
   
-  
+  const firstLast = people.map((name) => `${name.split(", ")[1]} ${name.split(", ")[0]}`);
+  console.log(firstLast)
   
   const data = [
     'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van',
@@ -85,11 +85,14 @@ console.log(oldInventors)
   // Array.prototype.some()
   // 8. Check if at least one person is 19 or older?
   
-  
+  const age = devs.some(dev => (2020 - dev.year >= 19));
+  console.log(age)
   
   // Array.prototype.every()
   // 9. Check if everyone is 19 or older?
   
+  const allAges = devs.every(person => (new Date()).getFullYear() - person.year >= 19);
+  console.log(allAges)
   
   
   const comments = [
@@ -103,8 +106,11 @@ console.log(oldInventors)
   // Array.prototype.find()
   // 10. Find the comment with the id of 823423
   
-  
+  const message = comments.find(comment => comment.id === 823423)
+  console.log(message)
   
   // Array.prototype.findIndex()
   // 11. Find the index of the comment with an id of 123523
   
+  const index = comments.findIndex(index => index.id === 123523)
+  console.log(index)
