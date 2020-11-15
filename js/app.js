@@ -32,17 +32,19 @@ const inventors = [
   // Array.prototype.sort()
   // 3. Sort the inventors by birthdate, oldest to youngest
   
- const birthdates = inventors.sort((a,b) => (a.year - b.year)) 
- console.log(birthdates)
+ const birthYear = inventors.sort((a,b) => (a.year - b.year)) 
+ console.log(birthYear)
   
   // 4. Sort the inventors by years lived from shortest to longest-lived
   
-  const lifespan = inventors.sort((a,b) => a.passed - a.year > b.passed - b.ear)
+  const lifespan = inventors.sort((a,b) => a.passed - a.year > b.passed - b.year)
+  console.log(lifespan)
   
   // Array.prototype.reduce()
   // 5. How many years did all the inventors live?
   
-  
+  const totalYears = inventors.reduce((total, inventor) => total + (inventor.passed - inventor.year), 0) //confused about the 0
+  console.log(totalYears)
   
   const people = [
     'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry',
@@ -73,7 +75,11 @@ const inventors = [
   // 7. Count the number of instances for each of the data items.
   // Hint:  Return an object where the keys are 'car', 'truck', etc. and the values are the count.
   
-  
+  let vehicles = data.reduce((acc, vehicle) => {
+    acc[vehicle] = acc[vehicle] ? acc[vehicle] + 1 : 1;
+    return acc;
+  }, {});
+  console.log(vehicles) //review this!!
   
   const devs = [
     { name: 'Wes', year: 1988 },
@@ -91,9 +97,8 @@ const inventors = [
   // Array.prototype.every()
   // 9. Check if everyone is 19 or older?
   
-  const allAges = devs.every(person => (new Date()).getFullYear() - person.year >= 19);
+  const allAges = devs.every(dev => (2020 - dev.year >= 19));
   console.log(allAges)
-  
   
   const comments = [
     { text: 'Love this!', id: 523423 },
